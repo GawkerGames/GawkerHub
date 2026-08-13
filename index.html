@@ -56,21 +56,23 @@
             color: rgba(255,255,255,0.3);
             font-size: 0.85rem;
             letter-spacing: 1px;
-            pointer-events: none; /* чтобы клики проходили сквозь */
+            pointer-events: none;
         }
         .top-bar span {
             opacity: 0.5;
         }
 
-        /* основной контент отодвигаем вниз, чтобы не перекрывался полосой */
+        /* ——— Заголовок GAWKER в стиле Aperture ——— */
         .main-title {
-            margin-top: 60px; /* чтобы заголовок не уходил под полосу */
+            margin-top: 60px;
             font-size: clamp(3rem, 12vw, 7rem);
             font-weight: 900;
-            color: #ffffff;
+            font-family: 'Futura', 'Trebuchet MS', 'Arial', sans-serif;
             text-align: center;
-            letter-spacing: 4px;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+            letter-spacing: 6px;
+            color: #66CCFF;
+            text-shadow: 0 0 20px rgba(102, 204, 255, 0.4),
+                         0 0 60px rgba(102, 204, 255, 0.1);
             padding: 60px 20px 40px;
             width: 100%;
             position: relative;
