@@ -37,7 +37,34 @@
             z-index: -1;
         }
 
+        /* ——— Верхняя размытая полоса ——— */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            pointer-events: none; /* чтобы клики проходили сквозь */
+        }
+        .top-bar span {
+            opacity: 0.5;
+        }
+
+        /* основной контент отодвигаем вниз, чтобы не перекрывался полосой */
         .main-title {
+            margin-top: 60px; /* чтобы заголовок не уходил под полосу */
             font-size: clamp(3rem, 12vw, 7rem);
             font-weight: 900;
             color: #ffffff;
@@ -192,7 +219,6 @@
         .footer-line {
             margin-bottom: 4px;
         }
-        /* Рекламный баннер */
         .ad-banner {
             margin: 10px auto 12px;
             padding: 8px 16px;
@@ -212,9 +238,20 @@
             border-color: rgba(255,255,255,0.5);
             color: rgba(255,255,255,0.8);
         }
+        .support-line a {
+            color: #88ccff;
+        }
+        .support-line a:hover {
+            color: #aaddff;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Верхняя размытая полоса (пока пустая) -->
+    <div class="top-bar"><span>⚡</span></div>
+
     <h1 class="main-title">GAWKER</h1>
 
     <div class="projects-section">
@@ -257,6 +294,13 @@
         <div class="footer-line">По поводу общего контента и рекламы — <a href="mailto:Gawkersupport@gmail.com">Gawkersupport@gmail.com</a></div>
         <div class="footer-line">По поводу Blaaperture mapping — <a href="mailto:Blaaperturemaps@gmail.com">Blaaperturemaps@gmail.com</a></div>
         <div class="footer-line">GitHub — <a href="https://github.com/GawkerGames" target="_blank">github.com/GawkerGames</a></div>
+        <!-- Новая строка с поддержкой -->
+        <div class="footer-line support-line">
+            Если хотите поддержать разработчика — 
+            <a href="https://boosty.to/gawker" target="_blank">Boosty</a>
+            (Patreon пока недоступен)
+        </div>
     </footer>
+
 </body>
 </html>
