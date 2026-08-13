@@ -17,7 +17,7 @@
             flex-direction: column;
             align-items: center;
             padding-bottom: 0;
-            background-image: url('IndexImage.webp');
+            background-image: url('IndexImage.jpg');
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
@@ -86,7 +86,6 @@
             background-position: center;
         }
 
-        /* затемнение внутри карточки, чтобы текст был читаем */
         .project-card::before {
             content: '';
             position: absolute;
@@ -94,7 +93,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.55);
             z-index: 0;
         }
 
@@ -158,6 +157,17 @@
             color: #000;
         }
 
+        /* Стили для img в карточке Blaaperture */
+        .project-card .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* чтобы быть под затемнением и текстом */
+        }
+
         footer {
             background-color: #000;
             color: rgba(255,255,255,0.3);
@@ -177,7 +187,7 @@
     <div class="projects-section">
         <div class="projects-grid">
             <!-- Карточка 1: Blaaperture Mapping (с img) -->
-            <div class="project-card" style="background: none; overflow: hidden;">
+            <div class="project-card" style="background: none;">
                 <img class="card-image" src="blaaperture.jpg" alt="Blaaperture Mapping">
                 <h3>Blaaperture Mapping</h3>
                 <p>Ремейк Black Mesa в стиле Aperture для Portal 2: CE</p>
