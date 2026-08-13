@@ -62,7 +62,7 @@
             opacity: 0.5;
         }
 
-        /* ——— Заголовок GAWKER с усиленным свечением ——— */
+        /* ——— Заголовок GAWKER ——— */
         .main-title {
             margin-top: 60px;
             font-size: clamp(3rem, 12vw, 7rem);
@@ -76,20 +76,20 @@
                 0 0 40px rgba(102, 204, 255, 0.3),
                 0 0 80px rgba(102, 204, 255, 0.2),
                 0 0 120px rgba(102, 204, 255, 0.1);
-            padding: 60px 20px 40px;
+            padding: 60px 20px 30px; /* уменьшил нижний отступ */
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
-        /* ——— Секция проектов — фон на всю ширину без скругления ——— */
+        /* ——— Секция проектов — фон на всю ширину с увеличенным верхним отступом ——— */
         .projects-section {
             width: 100%;
-            padding: 30px 20px;
+            padding: 40px 20px 30px; /* увеличил верхний отступ */
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(2px);
             border-radius: 0;
-            margin: 0 0 40px 0;
+            margin: 10px 0 40px 0; /* добавил небольшой отступ сверху */
             position: relative;
             z-index: 1;
         }
