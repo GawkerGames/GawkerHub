@@ -169,14 +169,27 @@
 
         footer {
             background-color: #000;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.4);
             font-size: 0.8rem;
-            letter-spacing: 1px;
             text-align: center;
-            padding: 12px 20px;
+            padding: 20px 20px 12px;
             width: 100%;
             position: relative;
             z-index: 1;
+            line-height: 1.6;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        footer a:hover {
+            color: #88ccff;
+            text-decoration: underline;
+        }
+        .footer-line {
+            margin-bottom: 4px;
         }
     </style>
 </head>
@@ -217,6 +230,11 @@
         </div>
     </div>
 
-    <footer>GAWKER · 2026 · Все права защищены</footer>
+    <footer>
+        <div class="footer-line">GawkerHub &bull; 2026 &bull; Все права защищены</div>
+        <div class="footer-line">По поводу общего контента — <a href="mailto:Gawkersupport@gmail.com">Gawkersupport@gmail.com</a></div>
+        <div class="footer-line">По поводу Blaaperture mapping — <a href="mailto:Blaaperturemaps@gmail.com">Blaaperturemaps@gmail.com</a></div>
+        <div class="footer-line">GitHub — <a href="https://github.com/GawkerGames" target="_blank">github.com/GawkerGames</a></div>
+    </footer>
 </body>
 </html>
