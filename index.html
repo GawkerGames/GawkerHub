@@ -177,7 +177,7 @@
             width: 100%;
             position: relative;
             z-index: 1;
-            line-height: 1.6;
+            line-height: 1.8;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         footer a {
@@ -191,6 +191,26 @@
         }
         .footer-line {
             margin-bottom: 4px;
+        }
+        /* Рекламный баннер */
+        .ad-banner {
+            margin: 10px auto 12px;
+            padding: 8px 16px;
+            border: 1px dashed rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.03);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(4px);
+            transition: 0.2s;
+        }
+        .ad-banner:hover {
+            border-color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.8);
         }
     </style>
 </head>
@@ -233,7 +253,8 @@
 
     <footer>
         <div class="footer-line">GawkerHub &bull; 2026 &bull; Все права защищены</div>
-        <div class="footer-line">По поводу общего контента — <a href="mailto:Gawkersupport@gmail.com">Gawkersupport@gmail.com</a></div>
+        <div class="footer-line ad-banner">📢 здесь могла быть ваша реклама</div>
+        <div class="footer-line">По поводу общего контента и рекламы — <a href="mailto:Gawkersupport@gmail.com">Gawkersupport@gmail.com</a></div>
         <div class="footer-line">По поводу Blaaperture mapping — <a href="mailto:Blaaperturemaps@gmail.com">Blaaperturemaps@gmail.com</a></div>
         <div class="footer-line">GitHub — <a href="https://github.com/GawkerGames" target="_blank">github.com/GawkerGames</a></div>
     </footer>
