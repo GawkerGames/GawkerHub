@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAWKER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 40px;
+            /* Фоновое изображение (замени ссылку) */
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            position: relative;
+            z-index: 0;
+        }
+        /* Затемняющий слой: сверху прозрачный (видно картинку), снизу — чёрный (плавный переход) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #000000 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Заголовок GAWKER — ярко-белый */
+        .main-title {
+            font-size: clamp(3rem, 12vw, 7rem);
+            font-weight: 900;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 4px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+            padding: 60px 20px 40px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Секция с карточками — полупрозрачный чёрный фон */
+        .projects-section {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 24px;
+            margin: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .project-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 28px 20px 24px;
+            text-align: center;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.2s;
+            aspect-ratio: 4 / 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            background: radial-gradient(circle at 30% 20%, #252525, #0e0e0e);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #ffffff;
+            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #b0b0b0;
+            line-height: 1.4;
+            max-width: 90%;
+        }
+
+        .project-card .tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            background: #2a2a2a;
+            color: #aaa;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid #333;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-title">GAWKER</h1>
+
+    <div class="projects-section">
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Boa Perture</h3>
+                <p>Ремейк Black Mesa в стиле Aperture для Portal 2: CE</p>
+                <span class="tag">🔧 в разработке</span>
+            </div>
+            <div class="project-card">
+                <h3>Sakh3p</h3>
+                <p>Архив заброшек Сахалина на GitHub Pages</p>
+                <span class="tag">🌐 live</span>
+            </div>
+            <div class="project-card">
+                <h3>VhsCollect</h3>
+                <p>Wiki кассет и камер с VHS‑эффектами</p>
+                <span class="tag">📼 концепт</span>
+            </div>
+            <div class="project-card">
+                <h3>Backrooms: Survivor</h3>
+                <p>Игра на Unity про выживание в Закулисье</p>
+                <span class="tag">🕹️ в разработке</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>GAWKER · 2026</footer>
+</body>
+</html>
