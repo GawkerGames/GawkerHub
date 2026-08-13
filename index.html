@@ -62,7 +62,7 @@
             opacity: 0.5;
         }
 
-        /* ——— Заголовок GAWKER в стиле Aperture ——— */
+        /* ——— Заголовок GAWKER с усиленным свечением ——— */
         .main-title {
             margin-top: 60px;
             font-size: clamp(3rem, 12vw, 7rem);
@@ -71,22 +71,25 @@
             text-align: center;
             letter-spacing: 6px;
             color: #66CCFF;
-            text-shadow: 0 0 20px rgba(102, 204, 255, 0.4),
-                         0 0 60px rgba(102, 204, 255, 0.1);
+            text-shadow: 
+                0 0 20px rgba(102, 204, 255, 0.4),
+                0 0 40px rgba(102, 204, 255, 0.3),
+                0 0 80px rgba(102, 204, 255, 0.2),
+                0 0 120px rgba(102, 204, 255, 0.1);
             padding: 60px 20px 40px;
             width: 100%;
             position: relative;
             z-index: 1;
         }
 
+        /* ——— Секция проектов — фон на всю ширину без скругления ——— */
         .projects-section {
             width: 100%;
-            max-width: 1100px;
             padding: 30px 20px;
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(2px);
-            border-radius: 24px;
-            margin: 0 20px 40px;
+            border-radius: 0;
+            margin: 0 0 40px 0;
             position: relative;
             z-index: 1;
         }
@@ -96,6 +99,8 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .project-card {
@@ -251,7 +256,7 @@
 </head>
 <body>
 
-    <!-- Верхняя размытая полоса (пока пустая) -->
+    <!-- Верхняя размытая полоса -->
     <div class="top-bar"><span>⚡</span></div>
 
     <h1 class="main-title">GAWKER</h1>
@@ -296,7 +301,6 @@
         <div class="footer-line">По поводу общего контента и рекламы — <a href="mailto:Gawkersupport@gmail.com">Gawkersupport@gmail.com</a></div>
         <div class="footer-line">По поводу Blaaperture mapping — <a href="mailto:Blaaperturemaps@gmail.com">Blaaperturemaps@gmail.com</a></div>
         <div class="footer-line">GitHub — <a href="https://github.com/GawkerGames" target="_blank">github.com/GawkerGames</a></div>
-        <!-- Новая строка с поддержкой -->
         <div class="footer-line support-line">
             Если хотите поддержать разработчика — 
             <a href="https://boosty.to/gawker" target="_blank">Boosty</a>
