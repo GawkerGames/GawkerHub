@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blaaperture — страница проекта</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1a1a2e;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #e0e0e0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: #16213e;
+            border-radius: 16px;
+            padding: 30px 30px 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+            border: 1px solid #2a3a5e;
+        }
+        /* Шапка как в Steam */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2a4a7a;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .header .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #66c0f4;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(102,192,244,0.3);
+        }
+        .header .logo span {
+            color: #ff6f00;
+        }
+        .header .nav {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #8a9bb5;
+        }
+        .header .nav a {
+            color: #b0c4de;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .header .nav a:hover {
+            color: #66c0f4;
+        }
+
+        /* Главный блок — как обложка игры */
+        .hero {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .hero-left {
+            flex: 1 1 300px;
+        }
+        .hero-left h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+        .hero-left .sub {
+            color: #66c0f4;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .hero-left .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .hero-left .tags span {
+            background: #2a3a5e;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #b0c4de;
+        }
+        .hero-left .desc {
+            color: #b8c6d8;
+            line-height: 1.6;
+            font-size: 15px;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+        .hero-left .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            background: #2a4a7a;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #66c0f4;
+            color: #0b1a2e;
+        }
+        .btn-primary:hover {
+            background: #7fcff5;
+            transform: scale(1.02);
+        }
+        .btn-secondary {
+            background: #2a3a5e;
+        }
+        .btn-secondary:hover {
+            background: #3a4a7a;
+        }
+
+        .hero-right {
+            flex: 0 0 280px;
+            background: #0f1a2e;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a4a7a;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .hero-right .box-title {
+            color: #8a9bb5;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-right .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #c0d0e0;
+        }
+        .hero-right .info-row .label {
+            color: #8a9bb5;
+        }
+        .hero-right .info-row .value {
+            color: #fff;
+        }
+
+        /* Скриншоты */
+        .screenshots {
+            margin: 30px 0;
+        }
+        .screenshots h2 {
+            font-size: 20px;
+            color: #c0d0e0;
+            margin-bottom: 16px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        .screenshots .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .screenshots .grid .item {
+            background: #0f1a2e;
+            border-radius: 10px;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5a7a;
+            font-size: 14px;
+            border: 1px solid #1a2a4a;
+            transition: 0.2s;
+            background-size: cover;
+            background-position: center;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+            font-weight: 600;
+        }
+        .screenshots .grid .item:hover {
+            border-color: #66c0f4;
+            transform: scale(1.01);
+        }
+        .screenshots .grid .item.placeholder {
+            background: linear-gradient(145deg, #1a2a4a, #0f1a2e);
+        }
+
+        /* Системные требования */
+        .requirements {
+            background: #0f1a2e;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 20px 0 30px;
+            border: 1px solid #1a2a4a;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .requirements h3 {
+            grid-column: 1 / -1;
+            color: #c0d0e0;
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid #1a2a4a;
+            padding-bottom: 8px;
+            margin-bottom: 6px;
+        }
+        .requirements .col ul {
+            list-style: none;
+            padding: 0;
+            font-size: 14px;
+        }
+        .requirements .col ul li {
+            padding: 4px 0;
+            color: #b0c4de;
+        }
+        .requirements .col ul li strong {
+            color: #c0d0e0;
+            font-weight: 500;
+        }
+
+        /* Подвал */
+        .footer {
+            border-top: 1px solid #1a2a4a;
+            padding-top: 16px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #5a6a8a;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer a {
+            color: #66c0f4;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            .hero-right {
+                flex: 1 1 100%;
+            }
+            .requirements {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <div class="header">
+            <div class="logo">Blaaperture<span>™</span></div>
+            <div class="nav">
+                <a href="#">Главная</a>
+                <a href="#">Карты</a>
+                <a href="#">Сообщество</a>
+                <a href="#">Поддержка</a>
+            </div>
+        </div>
+
+        <!-- Герой -->
+        <div class="hero">
+            <div class="hero-left">
+                <h1>Blaaperture</h1>
+                <div class="sub">Mapping · Remake · Portal 2: CE</div>
+                <div class="tags">
+                    <span>🔧 в разработке</span>
+                    <span>🎮 Source Engine</span>
+                    <span>🧩 головоломки</span>
+                    <span>🏢 индустриальный хоррор</span>
+                </div>
+                <div class="desc">
+                    Проект по созданию кастомной кампании для <strong>Portal 2: Community Edition</strong>.
+                    Вдохновлён вселенной Black Mesa и эстетикой Aperture. Ремейк классической геометрии
+                    Half‑Life 1 с новыми испытательными камерами, текстурами и сценариями.
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary">▶ Следить за разработкой</a>
+                    <a href="#" class="btn btn-secondary">📦 Мастерская</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="box-title">Информация о проекте</div>
+                <div class="info-row"><span class="label">Статус</span><span class="value">активная разработка</span></div>
+                <div class="info-row"><span class="label">Платформа</span><span class="value">Portal 2: CE</span></div>
+                <div class="info-row"><span class="label">Жанр</span><span class="value">головоломка / приключение</span></div>
+                <div class="info-row"><span class="label">Автор</span><span class="value">Gawker</span></div>
+                <div class="info-row"><span class="label">Дата анонса</span><span class="value">август 2026</span></div>
+                <div class="info-row"><span class="label">Язык</span><span class="value">русский, английский</span></div>
+            </div>
+        </div>
+
+        <!-- Скриншоты -->
+        <div class="screenshots">
+            <h2>Скриншоты</h2>
+            <div class="grid">
+                <div class="item placeholder">🖼️ Камера 1</div>
+                <div class="item placeholder">🖼️ Камера 2</div>
+                <div class="item placeholder">🖼️ Камера 3</div>
+                <div class="item placeholder">🖼️ Камера 4</div>
+            </div>
+        </div>
+
+        <!-- Системные требования -->
+        <div class="requirements">
+            <h3>Системные требования (для запуска карт)</h3>
+            <div class="col">
+                <ul>
+                    <li><strong>ОС:</strong> Windows 10 / 11</li>
+                    <li><strong>Процессор:</strong> Intel Core i3 / AMD FX</li>
+                    <li><strong>ОЗУ:</strong> 4 ГБ</li>
+                    <li><strong>Видеокарта:</strong> с поддержкой DirectX 11</li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul>
+                    <li><strong>Место на диске:</strong> 8 ГБ</li>
+                    <li><strong>Требуется:</strong> Portal 2: Community Edition</li>
+                    <li><strong>Дополнительно:</strong> BEE2 (рекомендуется)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <div class="footer">
+            <span>© 2026 Blaaperture. Все права защищены.</span>
+            <span>
+                <a href="https://gawkergames.github.io/GawkerHub/">GawkerHub</a> ·
+                <a href="mailto:Blaaperturemaps@gmail.com">почта</a> ·
+                <a href="https://github.com/GawkerGames">GitHub</a>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
