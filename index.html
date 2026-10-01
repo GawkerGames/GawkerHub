@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GawkerHub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Black+Ops+One&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .header-top {
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .logo .gawker {
+      color: #ffffff;
+    }
+    .logo .hub {
+      color: #3498db;
+    }
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    nav a.active {
+      color: #3498db;
+    }
+    .other-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .other-btn {
+      cursor: pointer;
+      color: #ccc;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .other-btn:hover {
+      color: #fff;
+    }
+    .other-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #34495e;
+      border: 1px solid #4a6a8a;
+      border-radius: 4px;
+      padding: 15px;
+      min-width: 180px;
+      margin-top: 10px;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .other-dropdown.open {
+      display: block;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .lang-switch span {
+      color: #95a5a6;
+      font-size: 13px;
+    }
+    .lang-switch a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 4px 10px;
+      border: 1px solid #4a6a8a;
+      border-radius: 3px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .lang-switch a:hover {
+      background-color: #3498db;
+      color: #fff;
+      border-color: #3498db;
+    }
+    .lang-switch a.active {
+      background-color: #3498db;
+      color: #fff;
+      border-color: #3498db;
+    }
+    .header-bottom {
+      background-color: #3d566e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      min-height: 100%;
+    }
+    /* Основной контент */
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+    /* Бета-предупреждение */
+    .beta-warning {
+      font-family: 'Black Ops One', 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: #3498db;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.6;
+      padding: 30px 20px;
+      border: 2px solid #3498db;
+      border-radius: 6px;
+      background-color: #eaf4fc;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 0 #ffffff, -1px -1px 0 #ffffff;
+    }
+    /* Футер */
+    footer {
+      background-color: #1a252f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    .footer-top {
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-info {
+      font-size: 14px;
+      color: #ccc;
+    }
+    .footer-info h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .footer-info a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    .footer-info a:hover {
+      text-decoration: underline;
+    }
+    .footer-bottom {
+      background-color: #141c24;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      min-height: 100%;
+      font-size: 12px;
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="logo">
+        <span class="gawker">Gawker</span><span class="hub">Hub</span>
+      </div>
+      <nav>
+        <a href="#" class="active" data-lang="nav-main">Main</a>
+        <a href="#" data-lang="nav-about">About</a>
+        <a href="#" data-lang="nav-projects">Projects</a>
+        <a href="#" data-lang="nav-support">Support</a>
+        <div class="other-wrapper">
+          <span class="other-btn" onclick="toggleOther()" data-lang="nav-other">Other ▾</span>
+          <div class="other-dropdown" id="otherDropdown">
+            <div class="lang-switch">
+              <span data-lang="lang-label">Language:</span>
+              <a href="#" class="active" onclick="setLang('en')" id="lang-en">EN</a>
+              <a href="#" onclick="setLang('ru')" id="lang-ru">RU</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="header-bottom"></div>
+  </header>
+
+  <div class="container">
+    <div class="beta-warning" data-lang="beta-warning">
+      THIS IS A BETA VERSION, THERE MAY BE FLAWS, BUGS, ERRORS, ETC.
+      IF YOU FOUND ONE, PLEASE GIVE FEEDBACK
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-info">
+        <h4 data-lang="footer-info-title">Information</h4>
+        <p><span data-lang="footer-email">Email:</span> <a href="mailto:krolandrei14@gmail.com">krolandrei14@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-lang="footer-copyright">© 2026 GawkerHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "nav-main": "Main",
+        "nav-about": "About",
+        "nav-projects": "Projects",
+        "nav-support": "Support",
+        "nav-other": "Other ▾",
+        "lang-label": "Language:",
+        "beta-warning": "THIS IS A BETA VERSION, THERE MAY BE FLAWS, BUGS, ERRORS, ETC. IF YOU FOUND ONE, PLEASE GIVE FEEDBACK",
+        "footer-info-title": "Information",
+        "footer-email": "Email:",
+        "footer-copyright": "© 2026 GawkerHub. All rights reserved."
+      },
+      ru: {
+        "nav-main": "Главная",
+        "nav-about": "О нас",
+        "nav-projects": "Проекты",
+        "nav-support": "Поддержка",
+        "nav-other": "Другое ▾",
+        "lang-label": "Язык:",
+        "beta-warning": "ЭТО БЕТА-ВЕРСИЯ, МОГУТ БЫТЬ НЕДОЧЁТЫ, БАГИ, ОШИБКИ И Т.Д. ЕСЛИ ВЫ НАШЛИ ОДИН ТАКОЙ, ТО СДЕЛАЙТЕ ФИДБЕК",
+        "footer-info-title": "Информация",
+        "footer-email": "Почта:",
+        "footer-copyright": "© 2026 GawkerHub. Все права защищены."
+      }
+    };
+
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+      document.getElementById('lang-' + lang).classList.add('active');
+      document.documentElement.lang = lang;
+    }
+
+    function toggleOther() {
+      const dropdown = document.getElementById('otherDropdown');
+      dropdown.classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(event) {
+      const wrapper = document.querySelector('.other-wrapper');
+      const dropdown = document.getElementById('otherDropdown');
+      if (wrapper && !wrapper.contains(event.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+
+    setLang('en');
+  </script>
+
+</body>
+</html>
