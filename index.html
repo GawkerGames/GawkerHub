@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GawkerHub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Black+Ops+One&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Arial, Helvetica, sans-serif;
       background-color: #f0f2f5;
@@ -32,6 +29,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
     .logo {
       font-family: 'Oswald', sans-serif;
@@ -40,16 +39,13 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-    .logo .gawker {
-      color: #ffffff;
-    }
-    .logo .hub {
-      color: #3498db;
-    }
+    .logo .gawker { color: #ffffff; }
+    .logo .hub { color: #3498db; }
     nav {
       display: flex;
-      gap: 30px;
+      gap: 25px;
       align-items: center;
+      flex-wrap: wrap;
     }
     nav a {
       color: #ccc;
@@ -58,17 +54,10 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: color 0.2s;
+      cursor: pointer;
     }
-    nav a:hover {
-      color: #fff;
-    }
-    nav a.active {
-      color: #3498db;
-    }
-    .other-wrapper {
-      position: relative;
-      display: inline-block;
-    }
+    nav a:hover, nav a.active { color: #fff; }
+    .other-wrapper { position: relative; display: inline-block; }
     .other-btn {
       cursor: pointer;
       color: #ccc;
@@ -77,9 +66,7 @@
       letter-spacing: 0.5px;
       transition: color 0.2s;
     }
-    .other-btn:hover {
-      color: #fff;
-    }
+    .other-btn:hover { color: #fff; }
     .other-dropdown {
       display: none;
       position: absolute;
@@ -89,23 +76,14 @@
       border: 1px solid #4a6a8a;
       border-radius: 4px;
       padding: 15px;
-      min-width: 180px;
+      min-width: 160px;
       margin-top: 10px;
       z-index: 100;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    .other-dropdown.open {
-      display: block;
-    }
-    .lang-switch {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .lang-switch span {
-      color: #95a5a6;
-      font-size: 13px;
-    }
+    .other-dropdown.open { display: block; }
+    .lang-switch { display: flex; gap: 10px; align-items: center; }
+    .lang-switch span { color: #95a5a6; font-size: 13px; }
     .lang-switch a {
       color: #ccc;
       text-decoration: none;
@@ -116,12 +94,7 @@
       transition: all 0.2s;
       cursor: pointer;
     }
-    .lang-switch a:hover {
-      background-color: #3498db;
-      color: #fff;
-      border-color: #3498db;
-    }
-    .lang-switch a.active {
+    .lang-switch a:hover, .lang-switch a.active {
       background-color: #3498db;
       color: #fff;
       border-color: #3498db;
@@ -129,9 +102,7 @@
     .header-bottom {
       background-color: #3d566e;
       padding: 15px 40px;
-      display: flex;
-      align-items: center;
-      min-height: 100%;
+      min-height: 20px;
     }
     .container {
       max-width: 1100px;
@@ -177,6 +148,8 @@
       border-radius: 6px;
       overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
     }
     .project-card:hover {
       transform: translateY(-4px);
@@ -184,7 +157,7 @@
     }
     .project-image {
       width: 100%;
-      height: 180px;
+      height: 120px;
       background-color: #2c3e50;
       display: flex;
       align-items: center;
@@ -197,6 +170,9 @@
     }
     .project-content {
       padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
     .project-content h3 {
       font-family: 'Oswald', sans-serif;
@@ -211,6 +187,7 @@
       color: #666;
       margin-bottom: 15px;
       line-height: 1.5;
+      flex: 1;
     }
     .project-status {
       display: inline-block;
@@ -220,19 +197,11 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-weight: bold;
+      align-self: flex-start;
     }
-    .status-active {
-      background-color: #d4edda;
-      color: #155724;
-    }
-    .status-frozen {
-      background-color: #fff3cd;
-      color: #856404;
-    }
-    .status-abandoned {
-      background-color: #f8d7da;
-      color: #721c24;
-    }
+    .status-active { background-color: #d4edda; color: #155724; }
+    .status-frozen { background-color: #fff3cd; color: #856404; }
+    .status-abandoned { background-color: #f8d7da; color: #721c24; }
     footer {
       background-color: #1a252f;
       color: #fff;
@@ -240,14 +209,12 @@
       flex-direction: column;
     }
     .footer-top {
-      padding: 15px 40px;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .footer-info {
-      font-size: 14px;
-      color: #ccc;
+      flex-wrap: wrap;
+      gap: 20px;
     }
     .footer-info h4 {
       font-family: 'Oswald', sans-serif;
@@ -257,26 +224,19 @@
       letter-spacing: 1px;
       margin-bottom: 8px;
     }
-    .footer-info a {
-      color: #3498db;
-      text-decoration: none;
-    }
-    .footer-info a:hover {
-      text-decoration: underline;
-    }
+    .footer-info p { font-size: 14px; color: #ccc; }
+    .footer-info a { color: #3498db; text-decoration: none; }
+    .footer-info a:hover { text-decoration: underline; }
     .footer-bottom {
       background-color: #141c24;
       padding: 15px 40px;
-      display: flex;
-      align-items: center;
-      min-height: 100%;
       font-size: 12px;
       color: #7f8c8d;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="header-top">
       <div class="logo">
@@ -310,7 +270,6 @@
 
     <h2 class="projects-title" data-lang="projects-title">Projects</h2>
     <div class="projects-grid">
-      
       <div class="project-card">
         <div class="project-image">Blaaperture</div>
         <div class="project-content">
@@ -319,7 +278,6 @@
           <span class="project-status status-active" data-lang="status-active">In development</span>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-image">Sakh3p</div>
         <div class="project-content">
@@ -328,7 +286,6 @@
           <span class="project-status status-abandoned" data-lang="status-abandoned">Long-term paused</span>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-image">VhsCollect</div>
         <div class="project-content">
@@ -337,7 +294,6 @@
           <span class="project-status status-abandoned" data-lang="status-abandoned">Long-term paused</span>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-image">Fluxcore</div>
         <div class="project-content">
@@ -346,7 +302,6 @@
           <span class="project-status status-frozen" data-lang="status-frozen">Frozen</span>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-image">Backrooms: Survivor</div>
         <div class="project-content">
@@ -355,7 +310,6 @@
           <span class="project-status status-frozen" data-lang="status-frozen">Frozen</span>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-image">Project V</div>
         <div class="project-content">
@@ -364,7 +318,6 @@
           <span class="project-status status-frozen" data-lang="status-frozen">Frozen</span>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -441,8 +394,7 @@
     }
 
     function toggleOther() {
-      const dropdown = document.getElementById('otherDropdown');
-      dropdown.classList.toggle('open');
+      document.getElementById('otherDropdown').classList.toggle('open');
     }
 
     document.addEventListener('click', function(event) {
@@ -455,6 +407,5 @@
 
     setLang('en');
   </script>
-
 </body>
 </html>
